@@ -78,12 +78,4 @@ config.mouse_bindings = {
 	}
 }
 
-config.ssh_domains = {
-	{
-		name = 'tamiko',
-		remote_address = 'tamiko.osiriz.xyz',
-		username = 'osiriz',
-	},
-}
-
 return config
