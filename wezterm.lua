@@ -1,5 +1,5 @@
 local wezterm = require('wezterm')
-local colorscheme = require('colorschemes/tokyonight')
+local colorscheme = require('colorschemes/rose-pine')
 local keybinds = require('keybinds')
 local tabline = require('tabline')
 
