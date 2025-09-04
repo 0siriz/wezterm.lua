@@ -1,5 +1,5 @@
 local wezterm = require('wezterm')
-local rosepine = require('colorschemes/rose-pine')
+local colorscheme = require('colorschemes/tokyonight')
 local keybinds = require('keybinds')
 local tabline = require('tabline')
 
@@ -24,7 +24,7 @@ config.font = wezterm.font({
 config.font_size = 12
 config.term = 'wezterm'
 config.audible_bell = 'Disabled'
-config.colors = rosepine.colors()
+config.colors = colorscheme.colors()
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 24
@@ -45,28 +45,28 @@ config.status_update_interval = 500
 tabline.setup({
 	modes = {
 		copy_mode = {
-			fg = rosepine.palette.base,
-			bg = rosepine.palette.iris,
+			fg = config.colors.background,
+			bg = config.colors.ansi[6],
 			text = 'copy',
 		},
 		resize_mode = {
-			fg = rosepine.palette.base,
-			bg = rosepine.palette.love,
+			fg = config.colors.background,
+			bg = config.colors.ansi[2],
 			text = 'resize',
 		},
 	},
 	leader = {
-		fg = rosepine.palette.base,
-		bg = rosepine.palette.pine,
+		fg = config.colors.background,
+		bg = config.colors.ansi[3],
 		text = 'leader',
 	},
 	domain = {
-		fg = rosepine.palette.base,
-		bg = rosepine.palette.gold,
+		fg = config.colors.background,
+		bg = config.colors.ansi[4],
 	},
 	hostname = {
-		fg = rosepine.palette.base,
-		bg = rosepine.palette.foam,
+		fg = config.colors.background,
+		bg = config.colors.ansi[8],
 	}
 })
 
