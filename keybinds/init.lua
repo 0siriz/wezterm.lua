@@ -65,26 +65,6 @@ M.keys = {
 		}),
 	},
 	{
-		key = 'LeftArrow',
-		mods = 'LEADER',
-		action = act.ActivatePaneDirection('Left'),
-	},
-	{
-		key = 'UpArrow',
-		mods = 'LEADER',
-		action = act.ActivatePaneDirection('Up'),
-	},
-	{
-		key = 'DownArrow',
-		mods = 'LEADER',
-		action = act.ActivatePaneDirection('Down'),
-	},
-	{
-		key = 'RightArrow',
-		mods = 'LEADER',
-		action = act.ActivatePaneDirection('Right'),
-	},
-	{
 		key = 'h',
 		mods = 'LEADER|CTRL',
 		action = act.SplitPane({
@@ -111,6 +91,26 @@ M.keys = {
 		action = act.SplitPane({
 			direction = 'Right'
 		}),
+	},
+	{
+		key = 'LeftArrow',
+		mods = 'LEADER',
+		action = act.ActivatePaneDirection('Left'),
+	},
+	{
+		key = 'UpArrow',
+		mods = 'LEADER',
+		action = act.ActivatePaneDirection('Up'),
+	},
+	{
+		key = 'DownArrow',
+		mods = 'LEADER',
+		action = act.ActivatePaneDirection('Down'),
+	},
+	{
+		key = 'RightArrow',
+		mods = 'LEADER',
+		action = act.ActivatePaneDirection('Right'),
 	},
 	{
 		key = 'h',
@@ -195,15 +195,18 @@ M.keys = {
 		action = act.ActivateCopyMode,
 	},
 	{
-		key = 's',
-		mods = 'LEADER',
-		action = act.QuickSelect,
-	},
-	{
 		key = 'r',
 		mods = 'LEADER',
 		action = act.ActivateKeyTable {
 			name = 'resize_mode',
+			one_shot = false,
+		}
+	},
+	{
+		key = 's',
+		mods = 'LEADER',
+		action = act.ActivateKeyTable {
+			name = 'scroll_mode',
 			one_shot = false,
 		}
 	},
@@ -216,36 +219,6 @@ M.keys = {
 		key = 'd',
 		mods = 'LEADER',
 		action = act.ShowLauncherArgs { flags = 'FUZZY|DOMAINS', title = 'Domains' },
-	},
-	{
-		key = 'UpArrow',
-		mods = 'CTRL',
-		action = act.ScrollByLine(-1),
-	},
-	{
-		key = 'DownArrow',
-		mods = 'CTRL',
-		action = act.ScrollByLine(1),
-	},
-	{
-		key = 'PageUp',
-		mods = 'CTRL',
-		action = act.ScrollByPage(-1),
-	},
-	{
-		key = 'PageDown',
-		mods = 'CTRL',
-		action = act.ScrollByPage(1),
-	},
-	{
-		key = 'UpArrow',
-		mods = 'CTRL|SHIFT',
-		action = act.ScrollToPrompt(-1),
-	},
-	{
-		key = 'DownArrow',
-		mods = 'CTRL|SHIFT',
-		action = act.ScrollToPrompt(1),
 	},
 	{
 		key = 'z',
@@ -296,6 +269,70 @@ M.key_tables = {
 			key = 'q',
 			action = act.PopKeyTable
 		},
+	},
+	scroll_mode = {
+		{
+			key = 'UpArrow',
+			action = act.ScrollByLine(-1)
+		},
+		{
+			key = 'k',
+			action = act.ScrollByLine(-1)
+		},
+		{
+			key = 'DownArrow',
+			action = act.ScrollByLine(1)
+		},
+		{
+			key = 'j',
+			action = act.ScrollByLine(1)
+		},
+		{
+			key = 'PageUp',
+			action = act.ScrollByPage(-0.5)
+		},
+		{
+			key = 'PageDown',
+			action = act.ScrollByPage(-0.5)
+		},
+		{
+			key = 'UpArrow',
+			mods = 'SHIFT',
+			action = act.ScrollToPrompt(-1)
+		},
+		{
+			key = 'k',
+			mods = 'SHIFT',
+			action = act.ScrollToPrompt(-1)
+		},
+		{
+			key = 'DownArrow',
+			mods = 'SHIFT',
+			action = act.ScrollToPrompt(1)
+		},
+		{
+			key = 'j',
+			mods = 'SHIFT',
+			action = act.ScrollToPrompt(1)
+		},
+		{
+			key = 'PageUp',
+			mods = 'SHIFT',
+			action = act.ScrollToTop
+		},
+		{
+			key = 'PageDown',
+			mods = 'SHIFT',
+			action = act.ScrollToBottom
+		},
+		{
+			key = 'Escape',
+			action = act.PopKeyTable
+		},
+		{
+			key = 'q',
+			action = act.PopKeyTable
+		}
 	},
 }
 

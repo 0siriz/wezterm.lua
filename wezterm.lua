@@ -54,6 +54,11 @@ tabline.setup({
 			bg = config.colors.ansi[2],
 			text = 'resize',
 		},
+		scroll_mode = {
+			fg = config.colors.background,
+			bg = config.colors.ansi[5],
+			text = 'scroll',
+		}
 	},
 	leader = {
 		fg = config.colors.background,
