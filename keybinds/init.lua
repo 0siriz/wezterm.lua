@@ -135,12 +135,12 @@ M.keys = {
 	{
 		key = 'q',
 		mods = 'LEADER',
-		action = act.CloseCurrentPane({confirm = true}),
+		action = act.CloseCurrentPane({ confirm = true }),
 	},
 	{
 		key = 'q',
 		mods = 'LEADER|SHIFT',
-		action = act.CloseCurrentTab({confirm = true}),
+		action = act.CloseCurrentTab({ confirm = true }),
 	},
 	{
 		key = 'd',
@@ -293,7 +293,7 @@ M.key_tables = {
 		},
 		{
 			key = 'PageDown',
-			action = act.ScrollByPage(-0.5)
+			action = act.ScrollByPage(0.5)
 		},
 		{
 			key = 'UpArrow',
