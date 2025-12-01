@@ -153,18 +153,6 @@ M.keys = {
 		action = act.SpawnTab('DefaultDomain'),
 	},
 	{
-		key = 't',
-		mods = 'LEADER|CTRL',
-		action = act.PromptInputLine {
-			description = 'Enter new name for tab',
-			action = callback(function(window, _, line)
-				if line then
-					window:active_tab():set_title(line)
-				end
-			end)
-		}
-	},
-	{
 		key = 'Tab',
 		mods = 'LEADER',
 		action = act.ActivateTabRelative(1),

@@ -1,7 +1,6 @@
 local wezterm = require('wezterm')
-local colorscheme = require('colorschemes/rose-pine')
 local keybinds = require('keybinds')
-local tabline = require('tabline')
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
 local config = {}
 
@@ -24,7 +23,7 @@ config.font = wezterm.font({
 config.font_size = 12
 config.term = 'wezterm'
 config.audible_bell = 'Disabled'
-config.colors = colorscheme.colors()
+config.color_scheme = 'rose-pine'
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 24
@@ -43,37 +42,49 @@ config.key_tables = keybinds.key_tables
 config.status_update_interval = 500
 
 tabline.setup({
-	modes = {
-		copy_mode = {
-			fg = config.colors.background,
-			bg = config.colors.ansi[6],
-			text = 'copy',
+	options = {
+		icons_enabled = false,
+		theme = 'rose-pine',
+		tabs_enabled = true,
+		section_separators = {
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
 		},
-		resize_mode = {
-			fg = config.colors.background,
-			bg = config.colors.ansi[2],
-			text = 'resize',
+		component_separators = '│',
+		tab_separators = {
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
 		},
-		scroll_mode = {
-			fg = config.colors.background,
-			bg = config.colors.ansi[5],
-			text = 'scroll',
-		}
+		theme_overrides = {
+			resize_mode = {
+				a = { fg = '#191724', bg = '#eb6f92' },
+				b = { fg = '#eb6f92', bg = '#26233a' },
+				c = { fg = '#e0def4', bg = '#191724' },
+			},
+			scroll_mode = {
+				a = { fg = '#191724', bg = '#c4a7e7' },
+				b = { fg = '#c4a7e7', bg = '#26233a' },
+				c = { fg = '#e0def4', bg = '#191724' },
+			},
+		},
 	},
-	leader = {
-		fg = config.colors.background,
-		bg = config.colors.ansi[3],
-		text = 'leader',
-	},
-	domain = {
-		fg = config.colors.background,
-		bg = config.colors.ansi[4],
-	},
-	hostname = {
-		fg = config.colors.background,
-		bg = config.colors.ansi[8],
+	sections = {
+		tabline_a = { 'mode' },
+		tabline_b = { 'workspace' },
+		tabline_c = { ' ' },
+		tab_active = {
+			'index',
+			{ 'process', padding = { left = 0, right = 1 } },
+			{ 'zoomed',  padding = 0 },
+		},
+		tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+		tabline_x = {},
+		tabline_y = { 'datetime', 'hostname' },
+		tabline_z = { 'domain' },
 	}
 })
+
+tabline.apply_to_config(config)
 
 config.mouse_bindings = {
 	{
