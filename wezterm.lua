@@ -44,7 +44,7 @@ config.status_update_interval = 500
 tabline.setup({
 	options = {
 		icons_enabled = false,
-		theme = 'rose-pine',
+		theme = wezterm.color.load_scheme(wezterm.config_dir .. '/colors/rose-pine.toml'),
 		tabs_enabled = true,
 		section_separators = {
 			left = wezterm.nerdfonts.ple_right_half_circle_thick,
@@ -85,6 +85,8 @@ tabline.setup({
 })
 
 tabline.apply_to_config(config)
+
+print(wezterm.color.get_builtin_schemes()['rose-pine'])
 
 config.mouse_bindings = {
 	{
