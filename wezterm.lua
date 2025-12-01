@@ -4,6 +4,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 
 local config = {}
 
+-- Font
 config.font = wezterm.font({
 	family = 'MonaspiceNe Nerd Font',
 	harfbuzz_features = {
@@ -21,13 +22,10 @@ config.font = wezterm.font({
 	}
 })
 config.font_size = 12
+
+-- Misc
 config.term = 'wezterm'
 config.audible_bell = 'Disabled'
-config.color_scheme = 'rose-pine'
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
-config.tab_max_width = 24
-config.show_new_tab_button_in_tab_bar = false
 config.inactive_pane_hsb = {
 	hue = 1.0,
 	saturation = 0.8,
@@ -35,12 +33,11 @@ config.inactive_pane_hsb = {
 }
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 config.scrollback_lines = 3500
-config.disable_default_key_bindings = true
-config.leader = keybinds.leader
-config.keys = keybinds.keys
-config.key_tables = keybinds.key_tables
-config.status_update_interval = 500
 
+-- Color
+config.color_scheme = 'rose-pine'
+
+-- Tabline / Statusbar
 tabline.setup({
 	options = {
 		icons_enabled = false,
@@ -83,11 +80,21 @@ tabline.setup({
 		tabline_z = { 'domain' },
 	}
 })
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.tab_max_width = 32
+config.show_new_tab_button_in_tab_bar = false
+config.status_update_interval = 500
+config.window_decorations = 'RESIZE'
+config.colors = config.colors or {}
+config.colors.tab_bar = config.colors.tab_bar or {}
+config.colors.tab_bar.background = require('tabline.config').theme.normal_mode.c.bg
 
-tabline.apply_to_config(config)
-
-print(wezterm.color.get_builtin_schemes()['rose-pine'])
-
+-- Keybinds
+config.disable_default_key_bindings = true
+config.leader = keybinds.leader
+config.keys = keybinds.keys
+config.key_tables = keybinds.key_tables
 config.mouse_bindings = {
 	{
 		event = { Up = { streak = 1, button = 'Left' } },
