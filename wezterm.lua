@@ -35,13 +35,13 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 config.scrollback_lines = 3500
 
 -- Color
-config.color_scheme = 'rose-pine'
+config.colors = wezterm.color.load_scheme(wezterm.config_dir .. '/colors/rose-pine.toml')
 
 -- Tabline / Statusbar
 tabline.setup({
 	options = {
 		icons_enabled = false,
-		theme = wezterm.color.load_scheme(wezterm.config_dir .. '/colors/rose-pine.toml'),
+		theme = config.colors,
 		tabs_enabled = true,
 		section_separators = {
 			left = wezterm.nerdfonts.ple_right_half_circle_thick,
@@ -54,14 +54,14 @@ tabline.setup({
 		},
 		theme_overrides = {
 			resize_mode = {
-				a = { fg = '#191724', bg = '#eb6f92' },
-				b = { fg = '#eb6f92', bg = '#26233a' },
-				c = { fg = '#e0def4', bg = '#191724' },
+				a = { fg = config.colors.background, bg = config.colors.ansi[2] },
+				b = { fg = config.colors.ansi[2], bg = config.colors.ansi[1] },
+				c = { fg = config.colors.ansi[8], bg = config.colors.background },
 			},
 			scroll_mode = {
-				a = { fg = '#191724', bg = '#c4a7e7' },
-				b = { fg = '#c4a7e7', bg = '#26233a' },
-				c = { fg = '#e0def4', bg = '#191724' },
+				a = { fg = config.colors.background, bg = config.colors.ansi[6] },
+				b = { fg = config.colors.ansi[6], bg = config.colors.ansi[1] },
+				c = { fg = config.colors.ansi[8], bg = config.colors.background },
 			},
 		},
 	},
@@ -86,7 +86,6 @@ config.tab_max_width = 32
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 500
 config.window_decorations = 'RESIZE'
-config.colors = config.colors or {}
 config.colors.tab_bar = config.colors.tab_bar or {}
 config.colors.tab_bar.background = require('tabline.config').theme.normal_mode.c.bg
 
