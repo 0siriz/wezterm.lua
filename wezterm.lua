@@ -102,4 +102,7 @@ config.mouse_bindings = {
 	}
 }
 
+-- Domains
+config.ssh_domains = {}
+
 return config
