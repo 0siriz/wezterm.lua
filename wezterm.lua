@@ -105,12 +105,6 @@ config.mouse_bindings = {
 -- Domains
 config.ssh_domains = {}
 
-local ok, tlsdomains = pcall(require, 'tlsdomains')
-if ok then
-	config.tls_clients = tlsdomains.clients
-	config.tls_servers = tlsdomains.servers
-end
-
 -- Launch Menu
 config.launch_menu = {}
 
