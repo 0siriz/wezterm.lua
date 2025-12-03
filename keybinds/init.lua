@@ -49,8 +49,11 @@ M.keys = {
 	},
 	{
 		key = 'Space',
-		mods = 'LEADER',
-		action = act.ShowLauncherArgs { flags = 'FUZZY|TABS|WORKSPACES|DOMAINS', title = 'Launcher' },
+		mods = 'LEADER|CTRL',
+		action = act.ShowLauncherArgs {
+			flags = 'FUZZY|TABS|WORKSPACES|DOMAINS|LAUNCH_MENU_ITEMS',
+			title = 'Launcher'
+		},
 	},
 }
 
@@ -58,6 +61,7 @@ extend(M.keys, require('keybinds.fontsize'))
 extend(M.keys, require('keybinds.clipboard'))
 extend(M.keys, require('keybinds.panes'))
 extend(M.keys, require('keybinds.tabs'))
+extend(M.keys, require('keybinds.workspaces'))
 
 M.key_tables = {
 	resize_mode = require('keybinds.resize_mode'),

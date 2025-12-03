@@ -111,4 +111,7 @@ if ok then
 	config.tls_servers = tlsdomains.servers
 end
 
+-- Launch Menu
+config.launch_menu = {}
+
 return config
