@@ -40,7 +40,7 @@ config.colors = wezterm.color.load_scheme(wezterm.config_dir .. '/colors/rose-pi
 -- Tabline / Statusbar
 tabline.setup({
 	options = {
-		icons_enabled = false,
+		icons_enabled = true,
 		theme = config.colors,
 		tabs_enabled = true,
 		section_separators = {
@@ -67,17 +67,32 @@ tabline.setup({
 	},
 	sections = {
 		tabline_a = { 'mode' },
-		tabline_b = { 'workspace' },
+		tabline_b = { { 'workspace', icons_enabled = false } },
 		tabline_c = { ' ' },
 		tab_active = {
 			'index',
+			{
+				'tab',
+				cond = function(tab)
+					return tab.tab_title ~= ''
+				end
+			},
 			{ 'process', padding = { left = 0, right = 1 } },
 			{ 'zoomed',  padding = 0 },
 		},
-		tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+		tab_inactive = {
+			'index',
+			{
+				'tab',
+				cond = function(tab)
+					return tab.tab_title ~= ''
+				end
+			},
+			{ 'process', padding = { left = 0, right = 1 } },
+		},
 		tabline_x = {},
-		tabline_y = { 'datetime', 'hostname' },
-		tabline_z = { 'domain' },
+		tabline_y = { { 'datetime', icons_enabled = false }, 'hostname' },
+		tabline_z = { { 'domain', icons_enabled = false } },
 	}
 })
 config.use_fancy_tab_bar = false
