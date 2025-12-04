@@ -77,8 +77,14 @@ tabline.setup({
 					return tab.tab_title ~= ''
 				end
 			},
-			{ 'process', padding = { left = 0, right = 1 } },
-			{ 'zoomed',  padding = 0 },
+			{
+				'process',
+				process_to_icon = {
+					['ssh'] = { wezterm.nerdfonts.dev_terminal, color = { fg = config.colors.cursor_bg or nil } },
+				},
+				padding = { left = 0, right = 1 },
+			},
+			{ 'zoomed', padding = 0 },
 		},
 		tab_inactive = {
 			'index',
@@ -88,7 +94,13 @@ tabline.setup({
 					return tab.tab_title ~= ''
 				end
 			},
-			{ 'process', padding = { left = 0, right = 1 } },
+			{
+				'process',
+				process_to_icon = {
+					['ssh'] = { wezterm.nerdfonts.dev_terminal, color = { fg = config.colors.cursor_bg or nil } },
+				},
+				padding = { left = 0, right = 1 }
+			},
 		},
 		tabline_x = {},
 		tabline_y = { { 'datetime', icons_enabled = false }, 'hostname' },
