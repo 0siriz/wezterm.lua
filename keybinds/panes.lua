@@ -108,6 +108,18 @@ local M = {
 		mods = 'LEADER',
 		action = act.TogglePaneZoomState
 	},
+	{
+		key = 'p',
+		mods = 'LEADER',
+		action = act.PaneSelect
+	},
+	{
+		key = 'p',
+		mods = 'LEADER|CTRL',
+		action = act.PaneSelect({
+			mode = 'SwapWithActive'
+		})
+	},
 }
 
 return M
