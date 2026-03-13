@@ -64,8 +64,8 @@ extend(M.keys, require('keybinds.tabs'))
 extend(M.keys, require('keybinds.workspaces'))
 
 M.key_tables = {
-	resize_mode = require('keybinds.resize_mode'),
-	scroll_mode = require('keybinds.scroll_mode'),
+	resize_mode = require('keybinds.tables.resize_mode'),
+	scroll_mode = require('keybinds.tables.scroll_mode'),
 }
 
 return M
