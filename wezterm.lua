@@ -121,12 +121,88 @@ config.disable_default_key_bindings = true
 config.leader = keybinds.leader
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
+config.disable_default_mouse_bindings = true
 config.mouse_bindings = {
 	{
+		event = { Down = { streak = 3, button = 'Left' } },
+		action = wezterm.action.SelectTextAtMouseCursor('Line'),
+	},
+	{
+		event = { Down = { streak = 2, button = 'Left' } },
+		action = wezterm.action.SelectTextAtMouseCursor('Word'),
+	},
+	{
+		event = { Down = { streak = 1, button = 'Left' } },
+		action = wezterm.action.SelectTextAtMouseCursor('Cell'),
+	},
+	{
+		event = { Down = { streak = 1, button = 'Left' } },
+		mods = 'SHIFT',
+		action = wezterm.action.ExtendSelectionToMouseCursor('Cell'),
+	},
+	{
+		event = { Down = { streak = 1, button = 'Left' } },
+		mods = 'ALT',
+		action = wezterm.action.SelectTextAtMouseCursor('Block'),
+	},
+	{
+		event = { Down = { streak = 1, button = 'Left' } },
+		mods = 'SHIFT|ALT',
+		action = wezterm.action.ExtendSelectionToMouseCursor('Block'),
+	},
+	{
+		event = { Down = { streak = 1, button = 'Middle' } },
+		action = wezterm.action.PasteFrom('PrimarySelection'),
+	},
+	{
 		event = { Up = { streak = 1, button = 'Left' } },
-		mods = 'CTRL',
-		action = wezterm.action.OpenLinkAtMouseCursor,
-	}
+		action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor('PrimarySelection'),
+	},
+	{
+		event = { Up = { streak = 2, button = 'Left' } },
+		action = wezterm.action.CompleteSelection('PrimarySelection'),
+	},
+	{
+		event = { Up = { streak = 3, button = 'Left' } },
+		action = wezterm.action.CompleteSelection('PrimarySelection'),
+	},
+	{
+		event = { Up = { streak = 1, button = 'Left' } },
+		mods = 'SHIFT',
+		action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor('PrimarySelection'),
+	},
+	{
+		event = { Up = { streak = 1, button = 'Left' } },
+		mods = 'ALT',
+		action = wezterm.action.CompleteSelection('PrimarySelection'),
+	},
+	{
+		event = { Up = { streak = 1, button = 'Left' } },
+		mods = 'SHIFT|ALT',
+		action = wezterm.action.CompleteSelection('PrimarySelection'),
+	},
+	{
+		event = { Drag = { streak = 1, button = 'Left' } },
+		action = wezterm.action.ExtendSelectionToMouseCursor('Cell'),
+	},
+	{
+		event = { Drag = { streak = 2, button = 'Left' } },
+		action = wezterm.action.ExtendSelectionToMouseCursor('Word')
+	},
+	{
+		event = { Drag = { streak = 3, button = 'Left' } },
+		action = wezterm.action.ExtendSelectionToMouseCursor('Line')
+	},
+	{
+		event = { Drag = { streak = 1, button = 'Left' } },
+		mods = 'ALT',
+		action = wezterm.action.ExtendSelectionToMouseCursor('Block'),
+	},
+	{
+		event = { Drag = { streak = 1, button = 'Left' } },
+		mods = 'SUPER',
+		action = wezterm.action.StartWindowDrag,
+	},
 }
 
 -- Domains
