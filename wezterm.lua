@@ -36,6 +36,7 @@ config.scrollback_lines = 3500
 
 -- Color
 config.colors = wezterm.color.load_scheme(wezterm.config_dir .. '/colors/rose-pine.toml')
+config.bold_brightens_ansi_colors = "No"
 
 -- Tabline / Statusbar
 tabline.setup({
