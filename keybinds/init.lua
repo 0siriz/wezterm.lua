@@ -32,6 +32,13 @@ M.keys = {
 		action = act.ActivateCopyMode,
 	},
 	{
+		key = 'u',
+		mods = 'LEADER',
+		action = act.CharSelect({
+			copy_on_select = false,
+		})
+	},
+	{
 		key = 'r',
 		mods = 'LEADER',
 		action = act.ActivateKeyTable {
