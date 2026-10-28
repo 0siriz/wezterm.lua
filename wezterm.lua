@@ -23,6 +23,7 @@ config.font = wezterm.font({
 	}
 })
 config.font_size = 12
+config.warn_about_missing_glyphs = false
 
 -- Misc
 config.term = 'wezterm'
